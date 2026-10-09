@@ -1,4 +1,4 @@
-/*class Solution {
+class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
         int slow = 0;
@@ -8,21 +8,20 @@ public:
             fast = nums[nums[fast]];
 
         }while(slow != fast);
-        int n1 = 0;
-        int n2 = slow;
-        while(n1 != n2){
-            n1 = nums[1];
-            n2 = nums[n2];
+         slow = 0;
+        while(slow != fast){
+            slow  = nums[slow];
+            fast = nums[fast];
 
         }
-        return n1;
+        return slow;
     }
-};*/
+};
 
 
 
 
-class Solution {
+/*class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
         unordered_set<int>st;
@@ -34,3 +33,4 @@ public:
         }
         return -1;
     }};
+    */
