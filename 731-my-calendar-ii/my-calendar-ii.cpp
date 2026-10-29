@@ -15,7 +15,7 @@ public:
  * bool param_1 = obj->book(startTime,endTime);
  */
 
-
+/*
 class MyCalendarTwo {
     vector<pair<int,int>> booked;   // all booked intervals
     vector<pair<int,int>> overlaps; // intervals that are already double booked
@@ -43,3 +43,30 @@ public:
         return true;
     }
 };
+*/
+
+
+class MyCalendarTwo {
+    map<int, int> events;
+    
+public:
+    MyCalendarTwo() { }
+    
+    bool book(int startTime, int endTime) {
+        events[startTime]++;
+        events[endTime]--;
+        int activeBooking = 0;
+        for(auto &event : events ){
+           activeBooking += event.second;
+           if(activeBooking >= 3){
+            events[startTime]--;
+            events[endTime]++;
+
+
+            return false;
+           }
+        }
+        return true;
+    }
+} ;
+
